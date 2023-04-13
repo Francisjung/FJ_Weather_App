@@ -1,20 +1,20 @@
-//https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key} 
-function fetchAPIData(){
-    var apiKey ='575a38952d6eade22750975bfb1c7f22';
-    var lat = 43.038902;
-    var lon = -87.906471;
-    var apiURl ="https://api.openweathermap.org/data/2.5/forecast?q=";
+//https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API-key} 
+var tempP = document.getElementById("current-temp");
+
+function fetchAPIData(city){
+    var apiKey ='appid=575a38952d6eade22750975bfb1c7f22';
+    var lat = "lat=43.03&";
+    var lon = "lon=-87.90&";
+    var apiURl = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&units=imperial&"+apiKey;
+    //"https://api.openweathermap.org/data/2.5/forecast?"+lat+lon+apiKey;
 
     fetch(apiURl).then(function (response) {
-        if(response.ok){
-            console.log(response.json())
+        
             return response.json();
-        }
+        
+    }).then(function (data){
+        console.log(data.list)
+        document.getElementById("current-temp").textContent= JSON.stringify(Math.floor(data.list[0].main.temp))+"° F";
     })
 }
-fetchAPIData();
-
-
-var searchParams =  document.location.search.split('&');
-
-console.log(searchParams);
+fetchAPIData("Milwaukee,us&");
