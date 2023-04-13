@@ -1,0 +1,17 @@
+header{
+    background-color: darkblue;
+}
+#home-header{
+    color: white;
+    text-align: center;
+}
+#weather-today{
+    border: solid;
+    border-color: black;
+}
+.float-right{
+    float: right;
+}
+.float-left{
+    float: left;
+}
